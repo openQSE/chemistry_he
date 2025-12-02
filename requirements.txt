@@ -1,0 +1,6 @@
+openfermion>=1.5.2
+qiskit==2.2.3
+pyscf==2.3.0
+numpy==1.26.4
+scipy==1.14.1
+qiskit_aer=0.17.2

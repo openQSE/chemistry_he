@@ -1,0 +1,1854 @@
+1 : He1-4
+----- GAMESS execution script 'rungms' -----
+This job is running on host baseline-login1.ccs.ornl.gov
+under operating system Linux at Tue May 6 17:28:51 EDT 2025
+Available scratch disk space (Kbyte units) at beginning of the job is
+Filesystem                                         1K-blocks       Used  Available Use% Mounted on
+svm-cades-open-nfs7a.ccs.ornl.gov:/baseline/home 10710574720 1298665984 9411908736  13% /autofs/nccsopen-svm1_home
+GAMESS temporary binary files will be written to /ccsopen/home/ysi/Apps//gamess/restart
+GAMESS supplementary output files will be written to /ccsopen/home/ysi/Apps//gamess
+Copying input file /autofs/nccsopen-svm1_home/ysi/QB-FMO/He124-14/He1-4.inp to your run's scratch directory...
+removed '/ccsopen/home/ysi/Apps//gamess/He1-4.dat'
+
+ Distributed Data Interface kickoff program.
+ Initiating 1 compute processes on 1 nodes to run the following command:
+ /ccsopen/home/ysi/Apps/gamess/gamess.00.x He1-4 
+
+          *******************************************************
+          *                                                     *
+          *      GAMESS VERSION = 15 JUL 2024 (R2 Patch 1)          *
+          *                                                     *
+          *              doi.org/10.1063/5.0005188              *
+          *                                                     *
+          **************** 64 BIT LINUX VERSION *****************
+
+  GAMESS HAS BEEN MADE POSSIBLE WITH IMPORTANT CONTRIBUTIONS FROM
+  THE FOLLOWING INDIVIDUALS (IN ALPHABETICAL ORDER):
+
+     IVANA ADAMOVIC, CHRISTINE AIKENS, TOMOKO AKAMA,
+     MELISA ALKAN, YURI ALEXEEV, YURIKO AOKI, POOJA ARORA,
+     TOSHIO ASADA, ANDREY ASADCHEV, KIM K. BALDRIDGE,
+     PRADIPTA BANDYOPADHYAY, TAYLOR A. BARNES, MARIA BARYSZ,
+     ROB BELL, JONATHAN BENTZ, COLLEEN BERTONI,
+     JERRY A. BOATZ, BRETT BODE, KURT BRORSEN, KURT R. BRORSEN,
+     LAIMUTIS BYTAUTAS, CALEB CARLIN, LAURA CARRINGTON,
+     GALINA CHABAN, BENOIT CHAMPAGNE, WEI CHEN, MAHITO CHIBA,
+     DAN CHIPMAN, CHEOL HO CHOI, TANNER CULPITT,
+     DIPAYAN DATTA, PAUL DAY, ALBERT DEFUSCO,
+     NUWAN DESILVA, J. EMILIANO DEUSTUA,
+     TIM DUDLEY, MICHEL DUPUIS, STEVEN T. ELBERT,
+     DMITRI FEDOROV, KATHERINE FERRERAS, MICHAEL FILATOV,
+     ALEX FINDLATER,GRAHAM FLETCHER, MARK FREITAG,
+     CHRISTIAN FRIEDL, DAVID GARMER, 
+     IGOR S. GERASIMOV, KURT GLAESEMANN,
+     MARK S. GORDON, JEFFREY R. GOUR, FENG LONG GU,
+     EMILIE B. GUIDEZ, ANASTASIA GUNINA, SHARON HAMMES-SCHIFFER,
+     MASATAKE HARUTA, KIMIHIKO HIRAO, YASUHIRO IKABATA,
+     TZVETELIN IORDANOV, STEPHAN IRLE, KAZUYA ISHIMURA,
+     JOE IVANIC, FRANK JENSEN, JAN H. JENSEN, VISVALDAS KAIRYS,
+     MUNEAKI KAMIYA, MICHIO KATOUDA, NAOAKI KAWAKAMI, DAN KEMP,
+     BERNARD KIRTMAN, KAZUO KITAURA, MARIUSZ KLOBUKOWSKI,
+     MASATO KOBAYASHI, KONSTANTIN KOMAROV, PRAKASHAN KORAMBATH,
+     JACEK KORCHOWIEC, SHIRO KOSEKI, KAROL KOWALSKI,
+     JIMMY KROMANN, STANISLAW A. KUCHARSKI, HENRY KURTZ,
+     SAROM SOK LEANG, SEUNGHOON LEE, HUI LI, SHUHUA LI, WEI LI,
+     JESSE J. LUTZ, ALEKSANDR O. LYKHIN,
+     ILIAS MAGOULAS, MARCIN MAKOWSKI,
+     JOANI MATO, NIKITA MATSUNAGA, BENEDETTA MENNUCCI,
+     GRANT MERRILL, NORIYUKI MINEZAWA, VLADIMIR MIRONOV,
+     EISAKU MIYOSHI, JOHN A. MONTGOMERY JR., HIROTOSHI MORI,
+     JONATHAN MULLIN, MONIKA MUSIAL, SHIGERU NAGASE,
+     TAKESHI NAGATA, HIROMI NAKAI, TAKAHITO NAKAJIMA,
+     YUYA NAKAJIMA, HARUYUKI NAKANO, HIROYA NAKATA, SEAN NEDD,
+     HEATHER NETZLOFF, KIET A. NGUYEN, YOSHIO NISHIMOTO,
+     BOSILJKA NJEGIC, RYAN OLSON, MIKE PAK, ROBERTO PEVERATI,
+     BUU PHAM, PIOTR PIECUCH, ANNA POMOGAEVA, DAVID POOLE,
+     SPENCER PRUITT, OLIVIER QUINET, LUKE ROSKOP,
+     KLAUS RUEDENBERG, ANDREW SAND, TOSAPORN SATTASATHUCHANA,
+     NOZOMI SAWADA, MICHAEL W. SCHMIDT, PATRICK E. SCHNEIDER,
+     JUNJI SEINO, PRACHI SHARMA, JUN SHEN, JIM SHOEMAKER,
+     GEORGE SCHOENDORFF, YINAN SHU, DEJUN SI, JONATHAN SKONE,
+     LYUDMILA SLIPCHENKO, TONY SMITH, JIE SONG, MARK SPACKMAN,
+     CASPER STEINMANN, WALT STEVENS, PEIFENG SU, SHUJUN SU,
+     CHET SWALINA, CHINAMI TAKASHIMA, TETSUYA TAKETSUGU,
+     ZHEN TAO, NANDUN THELLAMUREGE, ANANTA TIWARI,
+     SEIKEN TOKURA, JACOPO TOMASI,
+     TSUGUKI TOUMA, TAKAO TSUNEDA, HIROAKI UMEDA,
+     JORGE LUIS GALVEZ VALLEJO, YALI WANG, SIMON WEBB,
+     AARON WEST, THERESA L. WINDUS, MARTA WLOCH,
+     PENG XU, KIYOSHI YAGI, SUSUMU YANAGISAWA, YANG YANG,
+     SOOHAENG YOO, TAKESHI YOSHIKAWA, FEDERICO ZAHARIEV,
+     TOBY ZENG
+
+  WHO ARE SUPPORTED BY THEIR INSTITUTION/UNIVERSITY/COMPANY/GROUP
+  (IN ALPHABETICAL ORDER):
+
+     EP ANALYTICS,
+     FACULTES UNIVERSITAIRES NOTRE-DAME DE LA PAIX,
+     INSTITUTE FOR MOLECULAR SCIENCE, IOWA STATE UNIVERSITY,
+     JACKSON STATE UNIVERSITY, JOHANNES KEPLER UNIVERSITY LINZ,
+     KYUNGPOOK NATIONAL UNIVERSITY
+     KYUSHU UNIVERSITY, MICHIGAN STATE UNIVERSITY,
+     MIE UNIVERSITY, THE MOLECULAR SCIENCES SOFTWARE INSTITUTE,
+     MOSCOW STATE UNIVERSITY,
+     N. COPERNICUS UNIVERSITY, NAGOYA UNIVERSITY,
+     NANJING UNIVERSITY, NAT. INST. OF ADVANCED INDUSTRIAL
+     SCIENCE AND TECHNOLOGY, NATIONAL INST. OF STANDARDS AND
+     TECHNOLOGY, NESMEYANOV INSTITUTE OF ORGANOELEMENT COMPOUNDS
+     OF RUSSIAN ACADEMY OF SCIENCES, OSAKA PREFECTURE UNIVERSITY,
+     PENNSYLVANIA STATE UNIVERSITY, TOKYO INSTITUTE OF TECHNOLOGY,
+     UNIVERSITY OF AARHUS, UNIVERSITY OF ALBERTA,
+     UNIVERSITY OF CALIFORNIA AT SANTA BARBARA,
+     UNIVERSITY OF COPENHAGEN, UNIVERSITY OF IOWA,
+     UNIVERSITY OF MEMPHIS, UNIVERSITY OF MINNESOTA,
+     UNIVERSITY OF NEBRASKA, UNIVERSITY OF NEW ENGLAND,
+     UNIVERSITY OF NOTRE DAME, UNIVERSITY OF PISA,
+     UNIVERSITY OF SILESIA, UNIVERSITY OF TOKYO,
+     UNIVERSITY OF ZURICH, WASEDA UNIVERSITY,
+     YALE UNIVERSITY
+
+  GAMESS SOFTWARE MANAGEMENT TEAM FOR THIS RELEASE:
+     MARK S. GORDON (TEAM LEAD),
+     BRETT BODE (SENIOR ADVISOR),
+     GIUSEPPE BARCA,
+     COLLEEN BERTONI,
+     KRISTOPHER KEIPERT (ADVISOR),
+     SAROM S. LEANG (DEVELOPMENT LEAD),
+     BUU PHAM,
+     JACKSON HAYES (WEBSITE ADMINISTRATOR),
+     PENG XU
+
+ EXECUTION OF GAMESS BEGUN 17:28:52 06-MAY-2025    
+
+            ECHO OF THE FIRST FEW INPUT CARDS -
+ INPUT CARD> $CONTRL RUNTYP=FCIDUMP ispher=1 scftyp=rohf nprint=-5 $END                     
+ INPUT CARD> $SYSTEM TIMLIM=9999 MEMORY=5000000 $END                                        
+ INPUT CARD> $BASIS  GBASIS=CCD $END                                                        
+ INPUT CARD> $FMO NFRAG=4 NACUT=1 $END                                                      
+ INPUT CARD> $FMOPRP MODORB=3 $END                                                          
+ INPUT CARD> $DATA                                                                          
+ INPUT CARD>HE HF/CC-PVDZ                                                                   
+ INPUT CARD>C1                                                                              
+ INPUT CARD> He 2.0                                                                         
+ INPUT CARD> $END                                                                           
+ INPUT CARD> $FMOXYZ                                                                        
+ INPUT CARD> 1 He  -1.367427 -0.752156 0.029034                                             
+ INPUT CARD> 2 He  -0.23278 1.485915 -0.41553                                               
+ INPUT CARD> 3 He  0.650433 -0.047697 1.416799                                              
+ INPUT CARD> 4 He  0.949774 -0.686062 -1.03031                                              
+ INPUT CARD> $END                                                                           
+      5000000 WORDS OF MEMORY AVAILABLE
+
+     BASIS OPTIONS
+     -------------
+     GBASIS=CCD          IGAUSS=       0      POLAR=NONE    
+     NDFUNC=       0     NFFUNC=       0     DIFFSP=       F
+     NPFUNC=       0      DIFFS=       F     BASNAM=        
+
+
+     RUN TITLE
+     ---------
+ HE HF/CC-PVDZ                                                                   
+
+ THE POINT GROUP OF THE MOLECULE IS C1      
+ THE ORDER OF THE PRINCIPAL AXIS IS     0
+
+ ATOM   ATOMIC CHARGE
+ HE          2.0
+
+     ATOMIC BASIS SET LIBRARY
+     ----------------
+ THE CONTRACTED PRIMITIVE FUNCTIONS HAVE BEEN UNNORMALIZED
+ THE CONTRACTED BASIS FUNCTIONS ARE NOW NORMALIZED TO UNITY
+
+  SHELL TYPE  PRIMITIVE        EXPONENT          CONTRACTION COEFFICIENT(S)
+
+ HE        
+
+      1   S       1            38.3600000    0.040176075383
+      1   S       2             5.7700000    0.261368074769
+      1   S       3             1.2400000    0.793071239495
+
+      2   S       4             0.2976000    1.000000000000
+
+      3   P       5             1.2750000    1.000000000000
+
+ TOTAL NUMBER OF BASIS SET SHELLS             =    3
+ NUMBER OF CARTESIAN GAUSSIAN BASIS FUNCTIONS =    5
+
+ SELECTED MURRAY-HANDY-LAMING RADIAL GRID
+
+ LEGACY BECKE'S FUZZY CELL METHOD
+
+ SELECTED ORIGINAL BECKE'S PARTITION FUNCTION
+
+     $CONTRL OPTIONS
+     ---------------
+ SCFTYP=ROHF         RUNTYP=FCIDUMP      EXETYP=RUN     
+ MPLEVL=       0     CITYP =NONE         CCTYP =NONE         VBTYP =NONE    
+ DFTTYP=NONE         TDDFT =NONE    
+ MULT  =       1     ICHARG=       0     NZVAR =       0     COORD =UNIQUE  
+ PP    =NONE         RELWFN=NONE         LOCAL =NONE         NUMGRD=       F
+ ISPHER=       1     NOSYM =       0     MAXIT =      30     UNITS =ANGS    
+ PLTORB=       F     MOLPLT=       F     AIMPAC=       F     FRIEND=        
+ NPRINT=      -5     IREST =       0     GEOM  =INPUT   
+ NORMF =       0     NORMP =       0     ITOL  =      24     ICUT  =      12
+ INTTYP=BEST         GRDTYP=BEST         QMTTOL= 1.0E-06
+
+     $SYSTEM OPTIONS
+     ---------------
+  REPLICATED MEMORY=     5000000 WORDS (ON EVERY NODE).
+ DISTRIBUTED MEMDDI=           0 MILLION WORDS IN AGGREGATE,
+ MEMDDI DISTRIBUTED OVER   1 PROCESSORS IS           0 WORDS/PROCESSOR.
+ TOTAL MEMORY REQUESTED ON EACH PROCESSOR=     5000000 WORDS.
+ TIMLIM=        9999.00 MINUTES, OR       6.9 DAYS.
+ PARALL= F  BALTYP=  DLB     KDIAG=    0  COREFL= F
+ MXSEQ2=     300 MXSEQ3=     150  mem10=         0  mem22=         0
+
+     High-tech $SYSTEM options in MODIO:       1
+        (       1) file flushing:        no 
+        (       2) recycle dictionary:   no 
+        (       4) skip timing summary:  no 
+        (       8) save DFT grid file:   yes
+        (      16) reduce output:        no 
+        (      32) slaves open F15:      yes
+        (      64) in-memory F15:        no 
+        (     128) parallelize EVVRSP:   yes
+        (     256) reduce timing output: no 
+        (     512) use XYZ file:         no 
+        (    1024) supershort output:    no 
+        (    2048) superfast calculation:no 
+
+          ----------------
+          PROPERTIES INPUT
+          ----------------
+
+     MOMENTS            FIELD           POTENTIAL          DENSITY
+ IEMOM =       1   IEFLD =       0   IEPOT =       0   IEDEN =       0
+ WHERE =COMASS     WHERE =NUCLEI     WHERE =NUCLEI     WHERE =NUCLEI  
+ OUTPUT=BOTH       OUTPUT=BOTH       OUTPUT=NONE       OUTPUT=BOTH    
+ IEMINT=       0   IEFINT=       0                     IEDINT=       0
+                                                       MORB  =       0
+          EXTRAPOLATION IN EFFECT
+          SOSCF IN EFFECT
+ ORBITAL PRINTING OPTION: NPREO=     1 32767     2     1
+
+     ----------------------
+     TARGET OFFLOAD OPTIONS
+     ----------------------
+     RHF    =       F
+     CPHF    =       F
+     MAKEFP =       F
+
+     -------------------------------
+     INTEGRAL TRANSFORMATION OPTIONS
+     -------------------------------
+     NWORD  =            0
+     CUTTRF = 1.0E-10     MPTRAN =       0
+     DIRTRF =       F     AOINTS =DUP     
+
+          ----------------------
+          INTEGRAL INPUT OPTIONS
+          ----------------------
+ NOPK  =       1 NORDER=       0 SCHWRZ=       T
+
+ ..... DONE SETTING UP THE RUN .....
+ STEP CPU TIME =     0.01 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.0 SECONDS, CPU UTILIZATION IS    77.85%
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.0 SECONDS, CPU UTILIZATION IS    77.98%
+
+                    ----------------------
+                    AO INTEGRAL TECHNOLOGY
+                    ----------------------
+     S,P,L SHELL ROTATED AXIS INTEGRALS, REPROGRAMMED BY
+        KAZUYA ISHIMURA (IMS) AND JOSE SIERRA (SYNSTAR).
+     S,P,D,L SHELL ROTATED AXIS INTEGRALS PROGRAMMED BY
+        KAZUYA ISHIMURA (INSTITUTE FOR MOLECULAR SCIENCE).
+     S,P,D,F,G SHELL TO TOTAL QUARTET ANGULAR MOMENTUM SUM 5,
+        ERIC PROGRAM BY GRAHAM FLETCHER (ELORET AND NASA ADVANCED
+        SUPERCOMPUTING DIVISION, AMES RESEARCH CENTER).
+     S,P,D,F,G,L SHELL GENERAL RYS QUADRATURE PROGRAMMED BY
+        MICHEL DUPUIS (PACIFIC NORTHWEST NATIONAL LABORATORY).
+
+ Only RUNTYP=ENERGY,GRAD,OPTIMIZE,OPTFMO,SADPOINT,IRC,RAMAN,GLOBOP or
+ MEX is permitted, not FCIDUMP 
+
+ STEP CPU TIME =     0.01 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.0 SECONDS, CPU UTILIZATION IS    83.55%
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.0 SECONDS, CPU UTILIZATION IS    83.56%
+ Initialising fragments
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.0 SECONDS, CPU UTILIZATION IS    83.68%
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.0 SECONDS, CPU UTILIZATION IS    83.71%
+
+ -----------------------------------------------------------------------
+                  The Fragment Molecular Orbital (FMO) method.
+                         Version 5.5
+ Contributors: N. Asada, K. R. Brorsen, M. Chiba, C. Choi, D. G. Fedorov,
+ D. S. Kaliakin, N. Minezawa, V. Mironov, T. Nagata, H. Nakata, Y. Nishimoto,
+               S. R. Pruitt, C. Steinmann, and F. Zahariev.
+       All publications using the FMO method in GAMESS should cite:
+          D. G. Fedorov, K. Kitaura, J. Chem. Phys. 120, 6832 (2004).
+ -----------------------------------------------------------------------
+
+ Used memory (words):         6170
+ Number of fragments:      4
+ Number of layers:         1
+ N-body FMO method:        2
+ Number of atoms:          4
+ Total charge:             0
+ Total spin multiplicity:  1
+ Number of basis sets:     1
+ Number of LMO types:      0
+ Number of boundaries:     0
+ MonomerSCF convergence:   0.1000E-06
+ Max monomerSCF iter:     30
+ MonomerSCF criterion:     internal
+ Max AOs per n-mer:        5       10
+ Layer electron correlation information
+     nbody=  2
+    SCFTYP=ROHF    
+    MPLEVL=  0
+    DFTTYP=NONE    
+     CITYP=NONE    
+     CCTYP=NONE    
+     TDDFT=NONE    
+ FMO method: FMO2-ROHF
+
+ FMO approximations.
+    Using point charge approximation for the 2e ESP with the VdW factor   2.00
+    Using ES-dimer approximation with the VdW factor   2.00
+    The uniform distances will be used in ESPs.
+    Van der Waals radii in Angstrom are:
+       R(HE )=  1.2000
+
+ FMO initial guess options.
+    Using monomer density to form n-mer guess.
+    Use 1-mer Aufbau for initial n-mer orbitals.
+    Orthonormalize initial guess orbitals.
+
+ FMO extensions.
+
+ FMO automation options.
+    Number of atoms per fragment    1
+
+ FMO SCF converger options.
+    SCF convergers:
+     65     65     65     65     65     65     65     65     65     65
+    Fragment orbitals will be exchanged.
+    Fragment energies will be exchanged.
+
+ FMO parallelisation options.
+    Smart parallel load balancing: large jobs first.
+    ESPs will be shell parallelised.
+    Broadcast all fragments at once.
+    Do the fragment initialisation in the reverse order.
+
+ FMO properties and print-out level.
+    Interfragment CT method:    4
+       Compact print-out level.
+
+ Array dimensions maxbnd,maxknd,maxcbs,maxcao,maxbbd,maxnat are:
+                       9     10      5      5      5      1
+
+ --------------------------------------------------
+
+
+
+
+ Starting layer 1 nbody=2
+ SCFTYP=ROHF    MPLEVL=0 DFTTYP=NONE     CITYP=NONE    CCTYP=NONE    TDDFT=NONE    
+
+
+
+ Running initial guess for monomer       4
+
+ Running initial guess for monomer       3
+
+ Running initial guess for monomer       2
+
+ Running initial guess for monomer       1
+
+ There are           0 separated and       6 SCF (       0 correlated) dimers.
+ Estimate of max dimer size:   10 AOs,    2 occ. MOs
+
+ Fragment statistics
+
+      I  NAME     Q NAT0 NGA   NA  NAO  NMO L  MUL SCFTYP      NOP   MOL    CONV
+ ===============================================================================
+      1 frg00001  0    1   0    1    5    5 1  1 G ROHF          0    -1      -1
+      2 frg00002  0    1   0    1    5    5 1  1 G ROHF          0    -1      -1
+      3 frg00003  0    1   0    1    5    5 1  1 G ROHF          0    -1      -1
+      4 frg00004  0    1   0    1    5    5 1  1 G ROHF          0    -1      -1
+
+ Close fragment pairs, distance relative to vdW radii
+
+
+ ROHF     monomer      2 corr= NONE       , L1=     5, L0=     5 ID=      1
+
+
+ AO spaces for     2     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551763235    -2.8551763235   0.005878424   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551993855    -0.0000230620   0.000444995   0.000377382
+   3  2       -2.8551995180    -0.0000001326   0.000036408   0.000028544
+   4  3       -2.8551995188    -0.0000000008   0.000000001   0.000000002
+   5  4       -2.8551995188     0.0000000000   0.000000000   0.000000000
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551995188 AFTER   5 ITERATIONS
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.02 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.1 SECONDS, CPU UTILIZATION IS    31.79%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           62
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.1 SECONDS, CPU UTILIZATION IS    31.83%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+ Iter=  1 iFrag=      2 EFMO=    -2.855160476, DD= 0.006359827, DE=-2.855160476
+
+ ROHF     monomer      3 corr= NONE       , L1=     5, L0=     5 ID=      2
+
+
+ AO spaces for     3     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551764628    -2.8551764628   0.005878600   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551995261    -0.0000230634   0.000445008   0.000377393
+   3  2       -2.8551996587    -0.0000001326   0.000036409   0.000028545
+   4  3       -2.8551996594    -0.0000000008   0.000000001   0.000000002
+   5  4       -2.8551996594    -0.0000000000   0.000000000   0.000000000
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551996594 AFTER   5 ITERATIONS
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.1 SECONDS, CPU UTILIZATION IS    29.44%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           75
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.1 SECONDS, CPU UTILIZATION IS    29.07%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+ Iter=  1 iFrag=      3 EFMO=    -2.855160476, DD= 0.006360017, DE=-2.855160476
+
+ ROHF     monomer      4 corr= NONE       , L1=     5, L0=     5 ID=      3
+
+
+ AO spaces for     4     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551763570    -2.8551763570   0.005878466   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551994193    -0.0000230623   0.000444998   0.000377384
+   3  2       -2.8551995519    -0.0000001326   0.000036408   0.000028544
+   4  3       -2.8551995527    -0.0000000008   0.000000001   0.000000002
+   5  4       -2.8551995527     0.0000000000   0.000000000   0.000000000
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551995527 AFTER   5 ITERATIONS
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.2 SECONDS, CPU UTILIZATION IS    27.68%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           73
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.2 SECONDS, CPU UTILIZATION IS    27.40%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+ Iter=  1 iFrag=      4 EFMO=    -2.855160476, DD= 0.006359872, DE=-2.855160476
+
+ ROHF     monomer      1 corr= NONE       , L1=     5, L0=     5 ID=      4
+
+
+ AO spaces for     1     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551762165    -2.8551762165   0.005878289   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551992774    -0.0000230609   0.000444985   0.000377373
+   3  2       -2.8551994099    -0.0000001326   0.000036407   0.000028544
+   4  3       -2.8551994107    -0.0000000008   0.000000001   0.000000002
+   5  4       -2.8551994107     0.0000000000   0.000000000   0.000000000
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551994107 AFTER   5 ITERATIONS
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.2 SECONDS, CPU UTILIZATION IS    26.42%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           59
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.2 SECONDS, CPU UTILIZATION IS    26.21%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+ Iter=  1 iFrag=      1 EFMO=    -2.855160476, DD= 0.006359680, DE=-2.855160476
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.0 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.2 SECONDS, CPU UTILIZATION IS    26.31%
+
+  Monomer SCF synchronisation on iteration   1.1 took     0.0 s.
+
+
+ ------------------------------------------------------------------------------
+ FMO iter  1.1,      0 fragment(s) converged, maxD 0.006360017 maxE 2.855160476
+ ------------------------------------------------------------------------------
+
+ ROHF     monomer      2 corr= NONE       , L1=     5, L0=     5 ID=      1
+
+
+ AO spaces for     2     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551995103    -2.8551995103   0.000000510   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551995103    -0.0000000000   0.000000039   0.000000033
+   3  2       -2.8551995103    -0.0000000000   0.000000003   0.000000002
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551995103 AFTER   3 ITERATIONS
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.2 SECONDS, CPU UTILIZATION IS    25.51%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           62
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.2 SECONDS, CPU UTILIZATION IS    25.33%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+ Iter=  2 iFrag=      2 EFMO=    -2.855160476, DD= 0.000000552, DE= 0.000000000
+
+ ROHF     monomer      3 corr= NONE       , L1=     5, L0=     5 ID=      2
+
+
+ AO spaces for     3     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551996521    -2.8551996521   0.000000512   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551996521    -0.0000000000   0.000000039   0.000000033
+   3  2       -2.8551996521    -0.0000000000   0.000000003   0.000000002
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551996521 AFTER   3 ITERATIONS
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.2 SECONDS, CPU UTILIZATION IS    24.80%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           76
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.2 SECONDS, CPU UTILIZATION IS    24.65%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+ Iter=  2 iFrag=      3 EFMO=    -2.855160476, DD= 0.000000554, DE= 0.000000000
+
+ ROHF     monomer      4 corr= NONE       , L1=     5, L0=     5 ID=      3
+
+
+ AO spaces for     4     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551995444    -2.8551995444   0.000000511   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551995444    -0.0000000000   0.000000039   0.000000033
+   3  2       -2.8551995444    -0.0000000000   0.000000003   0.000000002
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551995444 AFTER   3 ITERATIONS
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.3 SECONDS, CPU UTILIZATION IS    24.24%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           73
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.3 SECONDS, CPU UTILIZATION IS    24.11%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+ Iter=  2 iFrag=      4 EFMO=    -2.855160476, DD= 0.000000553, DE= 0.000000000
+
+ ROHF     monomer      1 corr= NONE       , L1=     5, L0=     5 ID=      4
+
+
+ AO spaces for     1     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551994013    -2.8551994013   0.000000509   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551994013    -0.0000000000   0.000000039   0.000000033
+   3  2       -2.8551994013    -0.0000000000   0.000000003   0.000000002
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551994013 AFTER   3 ITERATIONS
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.3 SECONDS, CPU UTILIZATION IS    23.78%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           59
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.3 SECONDS, CPU UTILIZATION IS    23.67%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+ Iter=  2 iFrag=      1 EFMO=    -2.855160476, DD= 0.000000551, DE= 0.000000000
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.3 SECONDS, CPU UTILIZATION IS    23.74%
+
+  Monomer SCF synchronisation on iteration   2.1 took     0.0 s.
+
+
+ ------------------------------------------------------------------------------
+ FMO iter  2.1,      4 fragment(s) converged, maxD 0.000000554 maxE 0.000000000
+ ------------------------------------------------------------------------------
+
+ -Monomer SCF converging: one extra iteration to do correlation or properties.-
+
+ ROHF     monomer      2 corr= NONE       , L1=     5, L0=     5 ID=      1
+
+
+ AO spaces for     2     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551995115    -2.8551995115   0.000000000   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551995115     0.0000000000   0.000000000   0.000000000
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551995115 AFTER   2 ITERATIONS
+
+ a n-mer:      2      0      0 HOMO=  -24.876107 LUMO=  38.023429 gap=  62.899536
+
+ b n-mer:      2      0      0 HOMO=  -24.876107 LUMO=  38.023429 gap=  62.899536
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.3 SECONDS, CPU UTILIZATION IS    23.41%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           62
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.3 SECONDS, CPU UTILIZATION IS    23.31%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           62
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.3 SECONDS, CPU UTILIZATION IS    23.26%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+          ---------------------
+          ELECTROSTATIC MOMENTS
+          ---------------------
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000   -0.000003        0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+    -0.000001    0.000005   -0.000001    0.000005
+ Redoing 1e ESP:                     -1
+
+ Iter=  3 iFrag=      2 EFMOu=    -2.855160476
+
+ ROHF     monomer      3 corr= NONE       , L1=     5, L0=     5 ID=      2
+
+
+ AO spaces for     3     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551996533    -2.8551996533   0.000000000   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551996533     0.0000000000   0.000000000   0.000000000
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551996533 AFTER   2 ITERATIONS
+
+ a n-mer:      3      0      0 HOMO=  -24.876110 LUMO=  38.023419 gap=  62.899529
+
+ b n-mer:      3      0      0 HOMO=  -24.876110 LUMO=  38.023419 gap=  62.899529
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.3 SECONDS, CPU UTILIZATION IS    23.04%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           76
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.3 SECONDS, CPU UTILIZATION IS    22.95%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           76
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.3 SECONDS, CPU UTILIZATION IS    22.92%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+          ---------------------
+          ELECTROSTATIC MOMENTS
+          ---------------------
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000   -0.000003        0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+     0.000002   -0.000000    0.000004    0.000005
+ Redoing 1e ESP:                     -1
+
+ Iter=  3 iFrag=      3 EFMOu=    -2.855160476
+
+ ROHF     monomer      4 corr= NONE       , L1=     5, L0=     5 ID=      3
+
+
+ AO spaces for     4     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551995457    -2.8551995457   0.000000000   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551995457     0.0000000000   0.000000000   0.000000000
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551995457 AFTER   2 ITERATIONS
+
+ a n-mer:      4      0      0 HOMO=  -24.876108 LUMO=  38.023427 gap=  62.899535
+
+ b n-mer:      4      0      0 HOMO=  -24.876108 LUMO=  38.023427 gap=  62.899535
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.4 SECONDS, CPU UTILIZATION IS    22.75%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           73
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.4 SECONDS, CPU UTILIZATION IS    22.67%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           73
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.4 SECONDS, CPU UTILIZATION IS    22.64%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+          ---------------------
+          ELECTROSTATIC MOMENTS
+          ---------------------
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000   -0.000003       -0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+     0.000003   -0.000002   -0.000003    0.000005
+ Redoing 1e ESP:                     -1
+
+ Iter=  3 iFrag=      4 EFMOu=    -2.855160476
+
+ ROHF     monomer      1 corr= NONE       , L1=     5, L0=     5 ID=      4
+
+
+ AO spaces for     1     0     0 n-mer: L1=     5, L0=     5
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -2.8551994025    -2.8551994025   0.000000000   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -2.8551994025     0.0000000000   0.000000000   0.000000000
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -2.8551994025 AFTER   2 ITERATIONS
+
+ a n-mer:      1      0      0 HOMO=  -24.876104 LUMO=  38.023437 gap=  62.899542
+
+ b n-mer:      1      0      0 HOMO=  -24.876104 LUMO=  38.023437 gap=  62.899542
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.4 SECONDS, CPU UTILIZATION IS    22.49%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           59
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.4 SECONDS, CPU UTILIZATION IS    22.42%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =    5
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =    5
+ TOTAL NUMBER OF ATOMIC ORBITALS       =    5
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                60512
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =           59
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.4 SECONDS, CPU UTILIZATION IS    22.38%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+          ---------------------
+          ELECTROSTATIC MOMENTS
+          ---------------------
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000   -0.000003        0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+    -0.000004   -0.000002    0.000000    0.000005
+ Redoing 1e ESP:                     -1
+
+ Iter=  3 iFrag=      1 EFMOu=    -2.855160476
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.4 SECONDS, CPU UTILIZATION IS    22.45%
+
+  Monomer SCF synchronisation on iteration   3.1 took     0.0 s.
+
+ ------------Monomer SCF for layer 1 converged in  3 iterations!------------
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.4 SECONDS, CPU UTILIZATION IS    22.45%
+
+ ROHF     dimer      3      1 corr= NONE       , LL1=    10 ID=             1
+
+ AO spaces for     3     1     0 n-mer: L1=    10, L0=    10
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -5.7102361524    -5.7102361524   0.003771871   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -5.7102682900    -0.0000321377   0.000344366   0.000292300
+   3  2       -5.7102685059    -0.0000002159   0.000034221   0.000026982
+   4  3       -5.7102685075    -0.0000000016   0.000000165   0.000000371
+   5  4       -5.7102685075    -0.0000000000   0.000000009   0.000000030
+   6  5       -5.7102685075     0.0000000000   0.000000000   0.000000001
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -5.7102685075 AFTER   6 ITERATIONS
+
+ a n-mer:      3      1      0 HOMO=  -24.716067 LUMO=  36.311970 gap=  61.028037
+
+ b n-mer:      3      1      0 HOMO=  -24.716067 LUMO=  36.311970 gap=  61.028037
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.01 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.4 SECONDS, CPU UTILIZATION IS    22.31%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =   10
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =   10
+ TOTAL NUMBER OF ATOMIC ORBITALS       =   10
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                66022
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =         1526
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.4 SECONDS, CPU UTILIZATION IS    22.27%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+          ---------------------
+          ELECTROSTATIC MOMENTS
+          ---------------------
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000   -0.000003        0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+    -0.000002   -0.000003    0.000005    0.000006
+ Redoing 1e ESP:                     -1
+
+  iFrag=      3 jFrag=      1 EFMOu=    -5.710216421 Tr= 0.000000042
+
+ ROHF     dimer      3      2 corr= NONE       , LL1=    10 ID=             2
+
+ AO spaces for     3     2     0 n-mer: L1=    10, L0=    10
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -5.7102354921    -5.7102354921   0.003770386   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -5.7102676667    -0.0000321746   0.000344361   0.000292304
+   3  2       -5.7102678828    -0.0000002161   0.000034233   0.000026993
+   4  3       -5.7102678844    -0.0000000016   0.000000166   0.000000372
+   5  4       -5.7102678844    -0.0000000000   0.000000009   0.000000030
+   6  5       -5.7102678844    -0.0000000000   0.000000000   0.000000001
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -5.7102678844 AFTER   6 ITERATIONS
+
+ a n-mer:      3      2      0 HOMO=  -24.715714 LUMO=  36.309512 gap=  61.025227
+
+ b n-mer:      3      2      0 HOMO=  -24.715714 LUMO=  36.309512 gap=  61.025227
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.01 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.5 SECONDS, CPU UTILIZATION IS    22.73%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =   10
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =   10
+ TOTAL NUMBER OF ATOMIC ORBITALS       =   10
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                66022
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =         1522
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.5 SECONDS, CPU UTILIZATION IS    22.69%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+          ---------------------
+          ELECTROSTATIC MOMENTS
+          ---------------------
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000   -0.000003       -0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+     0.000001    0.000005    0.000003    0.000006
+ Redoing 1e ESP:                     -1
+
+  iFrag=      3 jFrag=      2 EFMOu=    -5.710215836 Tr= 0.000000043
+
+ ROHF     dimer      4      1 corr= NONE       , LL1=    10 ID=             3
+
+ AO spaces for     4     1     0 n-mer: L1=    10, L0=    10
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -5.7102364037    -5.7102364037   0.003772550   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -5.7102685239    -0.0000321203   0.000344367   0.000292297
+   3  2       -5.7102687397    -0.0000002158   0.000034215   0.000026976
+   4  3       -5.7102687413    -0.0000000016   0.000000165   0.000000370
+   5  4       -5.7102687413    -0.0000000000   0.000000009   0.000000030
+   6  5       -5.7102687413    -0.0000000000   0.000000000   0.000000001
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -5.7102687413 AFTER   6 ITERATIONS
+
+ a n-mer:      4      1      0 HOMO=  -24.716232 LUMO=  36.313123 gap=  61.029354
+
+ b n-mer:      4      1      0 HOMO=  -24.716232 LUMO=  36.313123 gap=  61.029354
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.01 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.5 SECONDS, CPU UTILIZATION IS    23.09%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =   10
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =   10
+ TOTAL NUMBER OF ATOMIC ORBITALS       =   10
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                66022
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =         1522
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.5 SECONDS, CPU UTILIZATION IS    23.05%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+          ---------------------
+          ELECTROSTATIC MOMENTS
+          ---------------------
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000   -0.000003        0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+    -0.000001   -0.000005   -0.000003    0.000006
+ Redoing 1e ESP:                     -1
+
+  iFrag=      4 jFrag=      1 EFMOu=    -5.710216693 Tr= 0.000000042
+
+ ROHF     dimer      4      2 corr= NONE       , LL1=    10 ID=             4
+
+ AO spaces for     4     2     0 n-mer: L1=    10, L0=    10
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -5.7102361467    -5.7102361467   0.003771858   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -5.7102682847    -0.0000321380   0.000344366   0.000292300
+   3  2       -5.7102685006    -0.0000002159   0.000034221   0.000026982
+   4  3       -5.7102685022    -0.0000000016   0.000000165   0.000000371
+   5  4       -5.7102685022    -0.0000000000   0.000000009   0.000000030
+   6  5       -5.7102685022    -0.0000000000   0.000000000   0.000000001
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -5.7102685022 AFTER   6 ITERATIONS
+
+ a n-mer:      4      2      0 HOMO=  -24.716064 LUMO=  36.311947 gap=  61.028011
+
+ b n-mer:      4      2      0 HOMO=  -24.716064 LUMO=  36.311947 gap=  61.028011
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.01 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.5 SECONDS, CPU UTILIZATION IS    23.40%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =   10
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =   10
+ TOTAL NUMBER OF ATOMIC ORBITALS       =   10
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                66022
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =         1489
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.5 SECONDS, CPU UTILIZATION IS    23.36%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+          ---------------------
+          ELECTROSTATIC MOMENTS
+          ---------------------
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000   -0.000003       -0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+     0.000002    0.000003   -0.000005    0.000006
+ Redoing 1e ESP:                     -1
+
+  iFrag=      4 jFrag=      2 EFMOu=    -5.710216415 Tr= 0.000000042
+
+ ROHF     dimer      4      3 corr= NONE       , LL1=    10 ID=             5
+
+ AO spaces for     4     3     0 n-mer: L1=    10, L0=    10
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -5.7102348314    -5.7102348314   0.003769022   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -5.7102670390    -0.0000322076   0.000344354   0.000292306
+   3  2       -5.7102672553    -0.0000002164   0.000034244   0.000027003
+   4  3       -5.7102672569    -0.0000000016   0.000000166   0.000000372
+   5  4       -5.7102672569    -0.0000000000   0.000000009   0.000000030
+   6  5       -5.7102672569    -0.0000000000   0.000000000   0.000000001
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -5.7102672569 AFTER   6 ITERATIONS
+
+ a n-mer:      4      3      0 HOMO=  -24.715396 LUMO=  36.307305 gap=  61.022700
+
+ b n-mer:      4      3      0 HOMO=  -24.715396 LUMO=  36.307305 gap=  61.022700
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.01 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.6 SECONDS, CPU UTILIZATION IS    23.67%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =   10
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =   10
+ TOTAL NUMBER OF ATOMIC ORBITALS       =   10
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                66022
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =         1496
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.6 SECONDS, CPU UTILIZATION IS    23.63%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+          ---------------------
+          ELECTROSTATIC MOMENTS
+          ---------------------
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000   -0.000003       -0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+     0.000005   -0.000002    0.000001    0.000006
+ Redoing 1e ESP:                     -1
+
+  iFrag=      4 jFrag=      3 EFMOu=    -5.710215308 Tr= 0.000000043
+
+ ROHF     dimer      2      1 corr= NONE       , LL1=    10 ID=             6
+
+ AO spaces for     2     1     0 n-mer: L1=    10, L0=    10
+
+ ITER EX      TOTAL ENERGY        E CHANGE  DENSITY CHANGE    ORB. GRAD 
+   1  0       -5.7102360293    -5.7102360293   0.003771886   0.000000000
+          ---------------START SECOND ORDER SCF---------------
+   2  1       -5.7102681659    -0.0000321365   0.000344364   0.000292298
+   3  2       -5.7102683817    -0.0000002159   0.000034221   0.000026981
+   4  3       -5.7102683833    -0.0000000016   0.000000165   0.000000371
+   5  4       -5.7102683833    -0.0000000000   0.000000009   0.000000030
+   6  5       -5.7102683833    -0.0000000000   0.000000000   0.000000001
+
+          -----------------
+          DENSITY CONVERGED
+          -----------------
+     TIME TO FORM FOCK OPERATORS=       0.0 SECONDS (       0.0 SEC/ITER)
+     TIME TO SOLVE SCF EQUATIONS=       0.0 SECONDS (       0.0 SEC/ITER)
+
+ FINAL ROHF ENERGY IS       -5.7102683833 AFTER   6 ITERATIONS
+
+ a n-mer:      2      1      0 HOMO=  -24.716074 LUMO=  36.312036 gap=  61.028111
+
+ b n-mer:      2      1      0 HOMO=  -24.716074 LUMO=  36.312036 gap=  61.028111
+
+          --------------------
+          SPIN SZ   =    0.000
+          S-SQUARED =    0.000
+          --------------------
+ ...... END OF ROHF CALCULATION ......
+ STEP CPU TIME =     0.01 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.6 SECONDS, CPU UTILIZATION IS    23.84%
+
+     --------------------------------------------
+     PARTIAL TWO ELECTRON INTEGRAL TRANSFORMATION
+     --------------------------------------------
+
+ NUMBER OF CORE MOLECULAR ORBITALS     =    0
+ NUMBER OF OCCUPIED MOLECULAR ORBITALS =   10
+ TOTAL NUMBER OF MOLECULAR ORBITALS    =   10
+ TOTAL NUMBER OF ATOMIC ORBITALS       =   10
+ THRESHOLD FOR KEEPING TRANSFORMED 2E- INTEGRALS = 1.000E-10
+ AO INTEGRALS WILL BE READ IN FROM DISK...
+
+ PLAN A: REQUIREMENTS FOR FULLY IN-MEMORY TRANSFORMATION:
+ # OF WORDS AVAILABLE =              4993829
+ # OF WORDS NEEDED    =                66022
+
+ CHOOSING IN MEMORY PARTIAL TRANSFORMATION...
+ TOTAL NUMBER OF TRANSFORMED 2E- INTEGRALS KEPT =         1496
+ ... END OF INTEGRAL TRANSFORMATION ...
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.6 SECONDS, CPU UTILIZATION IS    23.81%
+
+     --------------------------------------------------
+          FCIDUMP INTEGRAL FILE GENERATION
+          WRITTEN BY J. EMILIANO DEUSTUA
+     --------------------------------------------------
+    WRITING INTEGRALS FROM SERIAL TRANSFORMATION
+
+
+          ---------------------
+          ELECTROSTATIC MOMENTS
+          ---------------------
+
+ POINT   1           X           Y           Z (BOHR)    CHARGE
+                 0.000000    0.000000   -0.000003        0.00 (A.U.)
+         DX          DY          DZ         /D/  (DEBYE)
+    -0.000005    0.000002   -0.000001    0.000006
+ Redoing 1e ESP:                     -1
+
+  iFrag=      2 jFrag=      1 EFMOu=    -5.710216435 Tr= 0.000000042
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.6 SECONDS, CPU UTILIZATION IS    24.23%
+
+ Dimer synchronisation for layer 1 took     0.0 s.
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.6 SECONDS, CPU UTILIZATION IS    24.24%
+ Tim2:  IJ     0.20 lump  0.00 DFTBg  0.00 PCM 0.00 SCZV   0.00 total      0.20
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.6 SECONDS, CPU UTILIZATION IS    24.24%
+
+
+         FMO properties
+         ###############
+
+
+ Layer 1 converged in  3 iterations (max 30, conv .10E-06).
+
+
+ Nuclear repulsion energy:              4.984471975
+ Total number of atoms:                     4
+ Total number of electrons:                 8
+ Total charge:                              0
+ Total spin multiplicity:                   1
+ Total number of basis functions:          20
+ Total number of molecular orbitals:       20
+
+ Energy values (E) are given with external ESP subtracted.
+
+ D(dipole), Q(quadrupole) and O(octopole) moments are printed in the order:
+ X,Y,Z; XX,YY,ZZ,XY,XZ,YZ; XXX,XXY,XXZ,XYY,YYY,YYZ,XZZ,YZZ,ZZZ,XYZ,
+ computed at the point (A):    0.00000000   0.00000000  -0.00000175
+
+ One-body FMO properties.
+ =======================
+
+                            E"          DX        DY        DZ
+    1(frg00001,L1)     -2.855160476  -0.00000  -0.00000   0.00000
+    2(frg00002,L1)     -2.855160476  -0.00000   0.00000  -0.00000
+    3(frg00003,L1)     -2.855160476   0.00000  -0.00000   0.00000
+    4(frg00004,L1)     -2.855160476   0.00000  -0.00000  -0.00000
+
+ Frontier molecular orbital (FMO!) properties based on Koopmans' theorem.
+ Electronegativity = - chemical potential. All values are in eV.
+
+  Frag  Ionization    Electron    Chemical    Global       Global  Electrophili-
+         potential    affinity    potential  hardness     softness  city index
+ EA and related properties are often very inaccurate.
+ -------------------------------------------------------------------------------
+     1   24.876104   38.023437  -31.449771  -13.147333   -0.076061    -37.615542
+     2   24.876107   38.023429  -31.449768  -13.147323   -0.076061    -37.615564
+     3   24.876110   38.023419  -31.449765  -13.147309   -0.076061    -37.615594
+     4   24.876108   38.023427  -31.449767  -13.147319   -0.076061    -37.615571
+
+ Stability measures, global=   62.8995 averaged=   62.8995 eV
+
+ Total energy of the molecule: Euncorr(1)=      -11.420641902
+ Dipole moment D(xyz),DA(1)=    0.0000000    0.0000000    0.0000000    0.0000000
+
+ Two-body FMO properties.
+ ========================
+
+ DL: D=C dynamically correlated (MP2,CI), D=N not dynamically correlated
+ (RHF,DFT). D=S separated dimer: semiclassical interaction (ES), D=M MCSCF.
+ L stands for layer, Z is the monomer charge product, R is the interfragment
+ distance relative to van-der-Waals radii (-1.00 is printed if distances are
+ not computed). dDIJ*VIJ is the explicit embedded charge transfer energy.
+ Q(I->J) is the charge transfer amount, printed as zero if not available.
+ Positive values correspond to I in IJ having extra negative charge.
+
+    I    J DL  Z    R   Q(I->J)        E"        E"IJ-E"I-E"J   dDIJ*VIJ      Gsol     tot
+ ------------------------------------------------------------------------------------------
+    2    1 N1  0   1.06  0.0000     -5.710216435   0.00010452  0.00000004    0.000    0.066
+    3    1 N1  0   1.06  0.0000     -5.710216421   0.00010453  0.00000004    0.000    0.066
+    3    2 N1  0   1.06  0.0000     -5.710215836   0.00010512  0.00000004    0.000    0.066
+    4    1 N1  0   1.06  0.0000     -5.710216693   0.00010426  0.00000004    0.000    0.065
+    4    2 N1  0   1.06  0.0000     -5.710216415   0.00010454  0.00000004    0.000    0.066
+    4    3 N1  0   1.06  0.0000     -5.710215308   0.00010564  0.00000004    0.000    0.066
+
+ Total energy of the molecule: Euncorr(2)=      -11.420013050
+ Dipole moment D(xyz),DA(2)=   -0.0000000   -0.0000000   -0.0000000    0.0000000
+
+ Spin transfer for open-shell fragments:
+    IFG   JFG  S(I->J)
+      2     1   0.0000
+      3     1   0.0000
+      3     2   0.0000
+      4     1   0.0000
+      4     2   0.0000
+      4     3   0.0000
+
+ n-body  Mulliken atomic spin populations S(n)
+
+    IAT  IFG   Z        S(1)        S(2)
+     1    1   2.0    0.000000    0.000000
+     2    2   2.0    0.000000    0.000000
+     3    3   2.0    0.000000    0.000000
+     4    4   2.0    0.000000    0.000000
+
+ The best FMO energy is             -11.420013050
+
+ Done with FMO properties.
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.6 SECONDS, CPU UTILIZATION IS    24.27%
+ STEP CPU TIME =     0.00 TOTAL CPU TIME =          0.1 (      0.0 MIN)
+ TOTAL WALL CLOCK TIME=          0.6 SECONDS, CPU UTILIZATION IS    23.77%
+ Tim: ini  0.01 mon    0.39 dim    0.20 trim    0.00 prp    0.00 total     0.61
+
+ Total timing statistics in pairs (CPU,wall) for each rank, sec
+
+    Rank   total     SCF    corr     DFT    CPHF     EFP    solv     ESP    geom
+ -------------------------------------------------------------------------------
+       1       0.1      0.0      0.0      0.0    0.0   0.0    0.0     0.0    0.0
+       1       0.6      0.1      0.1      0.0    0.0   0.0    0.0     0.0    0.0
+averaged       0.1      0.0      0.0      0.0    0.0   0.0    0.0     0.0    0.0
+averaged       0.6      0.1      0.1      0.0    0.0   0.0    0.0     0.0    0.0
+
+  FMO  timing statistics in pairs (CPU,wall) for each rank, sec
+
+    Rank  FMOini FMOscf1  FMOdm1 FMOsyn1 FMOscf2  FMOes2 FMOsyn2 FMOscf3 FMOsyn3
+ -------------------------------------------------------------------------------
+       1   0.0       0.1   0.0    0.0       0.1      0.0    0.0       0.0    0.0
+       1   0.1       0.3   0.0    0.0       0.2      0.0    0.0       0.0    0.0
+averaged   0.0       0.1   0.0    0.0       0.1      0.0    0.0       0.0    0.0
+averaged   0.1       0.3   0.0    0.0       0.2      0.0    0.0       0.0    0.0
+                580000  WORDS OF DYNAMIC MEMORY USED
+ EXECUTION OF GAMESS TERMINATED NORMALLY 17:28:52 06-MAY-2025    
+ DDI: 263640 bytes (0.3 MB / 0 MWords) used by master data server.
+
+ ----------------------------------------
+ CPU timing information for all processes
+ ========================================
+ 0: 0.61 + 0.88 = 0.150
+ ----------------------------------------
+ ddikick.x: exited gracefully.
+----- accounting info -----
+Files used on the parent node baseline-login1.ccs.ornl.gov were:
+-rw-rw-r-- 1 ysi ysi    369 May  6 17:28 /ccsopen/home/ysi/Apps//gamess/restart/He1-4.F05
+-rw-rw-r-- 1 ysi ysi 180016 May  6 17:28 /ccsopen/home/ysi/Apps//gamess/restart/He1-4.F08
+-rw-rw-r-- 1 ysi ysi 180464 May  6 17:28 /ccsopen/home/ysi/Apps//gamess/restart/He1-4.F09
+-rw-rw-r-- 1 ysi ysi  65440 May  6 17:28 /ccsopen/home/ysi/Apps//gamess/restart/He1-4.F10
+-rw-rw-r-- 1 ysi ysi 147456 May  6 17:28 /ccsopen/home/ysi/Apps//gamess/restart/He1-4.F40
+Saving FCIDUMP files on the parent node.
+Tue May  6 17:28:53 EDT 2025
+0.110u 0.121s 0:01.89 12.1%	0+0k 0+144io 0pf+0w
