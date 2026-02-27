@@ -16,8 +16,28 @@ from qiskit.primitives import BackendEstimatorV2
 from qiskit.primitives import StatevectorEstimator
 np.random.seed(10)
 
-comment = """
+estimator = None
 
+def puccd_initialize(qfw=False):
+	global estimator
+
+	if qfw:
+		from qfw_qiskit import QFwBackend, QFwBackendType, QFwBackendCapability, QFwEstimatorV2
+		qfwbackend = QFwBackend(betype=QFwBackendType.QFW_TYPE_NWQSIM, capability=QFwBackendCapability.QFW_CAP_STATEVECTOR)
+		estimator = QFwEstimatorV2(backend=qfwbackend)
+		print(f"Estimator initialized with {qfwbackend}")
+		return
+
+	estimator = StatevectorEstimator()
+
+def puccd_finalize(qfw=False):
+	global estimator
+
+	if qfw:
+		estimator.shutdown()
+		print("estimator cleaned up")
+
+comment = """
 mol = gto.Mole()
 mol.atom = [('He', (0,0,0)),('He', (0,0,2))]
 # mol.atom=[('He',(0,0,0))]
@@ -826,10 +846,14 @@ class pairUCC:
 		measure the expectation value of observables with a qiskit ansatz 
 		and return a dictionary of expectation values and standard deviations
 		"""
+		global estimator
+
+		if not estimator:
+			raise ValueError("PUCCD module not initialized")
+
 		circuit = self.givens_rot_ansatz()
 		observables = self.observables()
 		parameters = [params]
-		estimator = StatevectorEstimator()
 		job = estimator.run([(circuit, observables, parameters)])
 		result = job.result()
 		evs = {}
