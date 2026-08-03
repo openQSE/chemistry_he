@@ -1,5 +1,6 @@
 from pyscf import gto, scf, ao2mo, fci 
 from pyscf.tools import fcidump
+import os
 import numpy as np  
 import openfermion as of 
 # from openfermion import *
@@ -17,24 +18,203 @@ from qiskit.primitives import StatevectorEstimator
 np.random.seed(10)
 
 estimator = None
+_qfw_runtime = {
+	"backend": None,
+	"reservation_id": None,
+	"owns_reservation": False,
+}
 
-def puccd_initialize(qfw=False):
-	global estimator
+def _qfw_runtime_empty():
+	return {
+		"backend": None,
+		"reservation_id": None,
+		"owns_reservation": False,
+	}
+
+def _qfw_backend_config(backend):
+	from qfw_qiskit import QFwBackendType, QFwBackendCapability
+
+	backend = (backend or "nwqsim").lower()
+	if backend == "nwqsim":
+		return (
+			QFwBackendType.QFW_TYPE_NWQSIM,
+			QFwBackendCapability.QFW_CAP_STATEVECTOR)
+	if backend == "tnqvm":
+		return (
+			QFwBackendType.QFW_TYPE_TNQVM,
+			QFwBackendCapability.QFW_CAP_TENSORNETWORK)
+	if backend == "qb":
+		return QFwBackendType.QFW_TYPE_QB, -1
+	raise ValueError(f"Unsupported QFw backend '{backend}'")
+
+def _qfw_reservation_request(backend, num_qubits, shots, walltime_ns, ttl_ns):
+	job_id = os.environ.get("SLURM_JOB_ID", "chemistry-example")
+	allocation_id = os.environ.get("SLURM_JOB_ID", job_id)
+	user = (
+		os.environ.get("SLURM_JOB_USER") or
+		os.environ.get("USER") or
+		os.environ.get("LOGNAME") or
+		"chemistry-example")
+	return {
+		"owner": {"user": user},
+		"job_id": job_id,
+		"allocation_id": allocation_id,
+		"num_qubits": num_qubits,
+		"num_shots": shots,
+		"walltime_ns": walltime_ns,
+		"ttl_ns": ttl_ns,
+		"workload": {
+			"application": "chemistry_example_aim2",
+			"backend": backend,
+		},
+		"run_context": {"operation": "qfw_estimator"},
+		"task_class": {
+			"count": 1,
+			"qubit_count": num_qubits,
+			"shots": shots,
+			"measurement_count": 1,
+		},
+	}
+
+def _qfw_admission_policy_path():
+	candidates = [
+		os.environ.get("QFW_CHEM_ADMISSION_POLICY_PATH"),
+		os.environ.get("QHW_ADMISSION_POLICY_PATH"),
+	]
+	qfw_path = os.environ.get("QFW_PATH")
+	if qfw_path:
+		base_dir = os.path.dirname(qfw_path)
+		candidates.extend([
+			os.path.join(base_dir, "qhw-admission", "build", "policies"),
+			os.path.join(
+				base_dir, "install", "qhw-admission", "lib",
+				"qhw_admission", "policies"),
+		])
+	for candidate in candidates:
+		if candidate and os.path.isdir(candidate):
+			return candidate
+	return None
+
+def _qfw_configure_admission_policy(qpm, policy_name):
+	if not policy_name:
+		return None
+	policy = {"name": policy_name}
+	policy_path = _qfw_admission_policy_path()
+	if policy_path:
+		policy["path"] = policy_path
+	result = qpm.set_admission_policy(policy)
+	if result.get("status") != "accepted":
+		raise RuntimeError(f"QFw admission policy was not accepted: {result}")
+	return result
+
+def _qfw_reserve(qfwbackend, backend, num_qubits, shots, walltime_ns, ttl_ns):
+	request = _qfw_reservation_request(
+		backend, num_qubits, shots, walltime_ns, ttl_ns)
+	decision = qfwbackend.qpm.reserve(request)
+	if (decision.get("status") != "accepted" or
+			not decision.get("reservation_id")):
+		raise RuntimeError(f"QFw reservation was not accepted: {decision}")
+	return decision["reservation_id"]
+
+def puccd_add_runtime_args(parser):
+	parser.add_argument("--qfw", action="store_true",
+		help="run Qiskit primitive calls through QFw")
+	parser.add_argument("--backend", default="nwqsim",
+		help="QFw backend to use when --qfw is set")
+	parser.add_argument("--reservation-id", default=None,
+		help="existing QFw reservation ID to use instead of reserving")
+	parser.add_argument("--reservation-qubits", type=int, default=32,
+		help="qubits requested for an app-managed QFw reservation")
+	parser.add_argument("--reservation-shots", type=int, default=4096,
+		help="shots requested for an app-managed QFw reservation")
+	parser.add_argument("--reservation-walltime-s", type=float, default=60.0,
+		help="walltime requested for an app-managed QFw reservation")
+	parser.add_argument("--reservation-ttl-s", type=float, default=60.0,
+		help="TTL requested for an app-managed QFw reservation")
+	parser.add_argument("--estimator-precision", type=float, default=None,
+		help="QFwEstimatorV2 default precision override")
+	parser.add_argument("--admission-policy", default="unlimited",
+		help="QPM admission policy to install before app-managed reserve")
+	parser.add_argument("--no-configure-admission-policy",
+		dest="configure_admission_policy", action="store_false",
+		help="skip app-managed admission policy setup")
+	parser.set_defaults(configure_admission_policy=True)
+
+def puccd_apply_legacy_args(args):
+	if getattr(args, "legacy_qfw", None):
+		args.qfw = True
+	return args
+
+def puccd_initialize_from_args(args):
+	return puccd_initialize(
+		qfw=args.qfw,
+		backend=args.backend,
+		reservation_id=args.reservation_id,
+		num_qubits=args.reservation_qubits,
+		shots=args.reservation_shots,
+		walltime_ns=int(args.reservation_walltime_s * 1_000_000_000),
+		ttl_ns=int(args.reservation_ttl_s * 1_000_000_000),
+		estimator_precision=args.estimator_precision,
+		admission_policy=args.admission_policy,
+		configure_admission_policy=args.configure_admission_policy)
+
+def puccd_initialize(qfw=False, backend="nwqsim", reservation_id=None,
+		num_qubits=32, shots=4096, walltime_ns=60_000_000_000,
+		ttl_ns=60_000_000_000, estimator_precision=None,
+		admission_policy="unlimited", configure_admission_policy=True):
+	global estimator, _qfw_runtime
+
+	if estimator is not None:
+		raise RuntimeError("PUCCD module is already initialized")
 
 	if qfw:
-		from qfw_qiskit import QFwBackend, QFwBackendType, QFwBackendCapability, QFwEstimatorV2
-		qfwbackend = QFwBackend(betype=QFwBackendType.QFW_TYPE_NWQSIM, capability=QFwBackendCapability.QFW_CAP_STATEVECTOR)
-		estimator = QFwEstimatorV2(backend=qfwbackend)
-		print(f"Estimator initialized with {qfwbackend}")
+		from qfw_qiskit import QFwBackend, QFwEstimatorV2
+		betype, capability = _qfw_backend_config(backend)
+		qfwbackend = QFwBackend(betype=betype, capability=capability)
+		owns_reservation = False
+		if reservation_id is None:
+			if configure_admission_policy:
+				_qfw_configure_admission_policy(
+					qfwbackend.qpm, admission_policy)
+			reservation_id = _qfw_reserve(
+				qfwbackend, backend, num_qubits, shots,
+				walltime_ns, ttl_ns)
+			owns_reservation = True
+		options = {"run_options": {"reservation_id": reservation_id}}
+		if estimator_precision is not None:
+			options["default_precision"] = estimator_precision
+		estimator = QFwEstimatorV2(backend=qfwbackend, options=options)
+		_qfw_runtime = {
+			"backend": qfwbackend,
+			"reservation_id": reservation_id,
+			"owns_reservation": owns_reservation,
+		}
+		print(
+			f"Estimator initialized with {qfwbackend}; "
+			f"reservation_id={reservation_id}")
 		return
 
 	estimator = StatevectorEstimator()
 
 def puccd_finalize(qfw=False):
-	global estimator
+	global estimator, _qfw_runtime
 
-	if qfw:
-		estimator.shutdown()
+	qfwbackend = _qfw_runtime.get("backend")
+	reservation_id = _qfw_runtime.get("reservation_id")
+	owns_reservation = _qfw_runtime.get("owns_reservation", False)
+	qfw_estimator = estimator
+	estimator = None
+	_qfw_runtime = _qfw_runtime_empty()
+
+	if qfw or qfwbackend is not None:
+		if qfwbackend is not None and owns_reservation and reservation_id:
+			try:
+				released = qfwbackend.qpm.release(reservation_id, reason=0)
+				print(f"QFw reservation released: {released}")
+			except Exception as e:
+				print(f"QFw reservation release failed: {e}")
+		if qfw_estimator is not None and hasattr(qfw_estimator, "shutdown"):
+			qfw_estimator.shutdown()
 		print("estimator cleaned up")
 
 comment = """
@@ -1526,4 +1706,3 @@ class pairUCC:
 # ansatz.draw(output='mpl',filename='givens.jpeg')
 # oovqe.optimize_ansatz_qk(oovqe.initial_guess_mp2d())
 # exit()
-

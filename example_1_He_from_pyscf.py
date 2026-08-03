@@ -1,17 +1,32 @@
-from puccd import puccd_initialize, puccd_finalize
+import argparse
+from puccd import (
+	puccd_add_runtime_args,
+	puccd_apply_legacy_args,
+	puccd_initialize_from_args,
+	puccd_finalize,
+)
 from example_1_He import example_1_He
-import time, sys
+import time
+
+def parse_args():
+	parser = argparse.ArgumentParser(
+		description="Run the He pUCCD example from PySCF input")
+	puccd_add_runtime_args(parser)
+	parser.add_argument("--smoke", action="store_true",
+		help="limit optimizer iterations for integration testing")
+	parser.add_argument("--no-draw", action="store_true",
+		help="skip ansatz image generation")
+	parser.add_argument("legacy_qfw", nargs="?", help=argparse.SUPPRESS)
+	return puccd_apply_legacy_args(parser.parse_args())
 
 if __name__ == "__main__":
-	args = sys.argv
-	qfw = False
-	if (len(args) > 1):
-		qfw = True
+	args = parse_args()
 
-	puccd_initialize(qfw=qfw)
+	puccd_initialize_from_args(args)
 
-	start = time.time()
-	example_1_He()
-	print(f"####Example 1 HE completed in {time.time() - start}")
-
-	puccd_finalize(qfw=qfw)
+	try:
+		start = time.time()
+		example_1_He(smoke=args.smoke, draw=not args.no_draw)
+		print(f"####Example 1 HE completed in {time.time() - start}")
+	finally:
+		puccd_finalize(qfw=args.qfw)

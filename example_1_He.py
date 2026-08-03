@@ -4,7 +4,7 @@ import setup_FMO
 from pyscf import gto, scf, ao2mo, fci 
 from pyscf.tools import fcidump
 
-def example_1_He():
+def example_1_He(smoke=False, draw=True):
 	# 1. Create a pyscf.Mole object for He atom
 	mol = gto.Mole()
 	mol.atom = [('He', (0,0,0))]
@@ -38,7 +38,8 @@ def example_1_He():
 	# 5. Print the ansatz circuit
 	ansatz = puccd.givens_rot_ansatz()
 	print(ansatz)
-	ansatz.draw(output='mpl',filename='/tmp/example_1_ansatz.jpeg')
+	if draw:
+		ansatz.draw(output='mpl',filename='/tmp/example_1_ansatz.jpeg')
 
 	# 6. Prepare an initial guess for the VQE from diagonal MP2
 	guess = puccd.initial_guess_mp2d()
@@ -64,13 +65,14 @@ def example_1_He():
 	print(guess_orb_hess)
 
 	# 9. Perform a VQE subroutine to optimize the pUCCD parameters
-	e_puccd = puccd.optimize_amps_qk(guess)
+	maxiter_amps = 1 if smoke else 1000
+	maxiter_orbs = 1 if smoke else 1000
+	e_puccd = puccd.optimize_amps_qk(guess, maxiter_amps=maxiter_amps)
 	print('E(pUCCD) = %.12f'%e_puccd)
 
 	# 7. Rotate orbitals to optimize VQE energy using converged VQE results
 	#    Note: orbital rotations are implemented by transforming the integrals
 	#    used to build the Hamiltonian/gradient/hessian
-	e_oopuccd = puccd.optimize_orbs_qk(puccd.vqe_params)
+	e_oopuccd = puccd.optimize_orbs_qk(maxiter=maxiter_orbs)
 	print('E(oo-pUCCD) = %.12f'%e_oopuccd)
-
 
