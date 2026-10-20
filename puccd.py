@@ -18,12 +18,17 @@ np.random.seed(10)
 
 estimator = None
 
-def puccd_initialize(qfw=False):
+def puccd_initialize(qfw=False, provider=None, shots=None):
 	global estimator
 
 	if qfw:
 		from qfw_qiskit import QFwBackend, QFwBackendType, QFwBackendCapability, QFwEstimatorV2
-		qfwbackend = QFwBackend(betype=QFwBackendType.QFW_TYPE_NWQSIM, capability=QFwBackendCapability.QFW_CAP_STATEVECTOR)
+		if provider:
+			qfwbackend = QFwBackend(provider=provider)
+		else:
+			qfwbackend = QFwBackend(betype=QFwBackendType.QFW_TYPE_NWQSIM, capability=QFwBackendCapability.QFW_CAP_STATEVECTOR)
+		if shots:
+			qfwbackend.options.shots = shots
 		estimator = QFwEstimatorV2(backend=qfwbackend)
 		print(f"Estimator initialized with {qfwbackend}")
 		return
