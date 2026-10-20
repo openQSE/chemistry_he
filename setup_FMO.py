@@ -1,19 +1,14 @@
-import os
 from pathlib import Path
-import numpy as np
 
-def setup_FMO(folder:str, base:str):
-	monomer_files = []
-	dimer_files = []
+def setup_FMO(fcidump_path: str):
+	base_path = Path(fcidump_path).expanduser().resolve(strict=True)
+	pattern_prefix = base_path.name
+	monomer_files = sorted(base_path.parent.glob(f"{pattern_prefix}-1-*"))
+	dimer_files = sorted(base_path.parent.glob(f"{pattern_prefix}-2-*"))
 
-	n_monomers = len(list(Path(folder).glob(base + '-1-*')))
-	n_dimers = len(list(Path(folder).glob(base + '-2-*')))
+	if not monomer_files:
+		raise ValueError(f"no monomer FCIDUMP files found for {base_path}")
+	if not dimer_files:
+		raise ValueError(f"no dimer FCIDUMP files found for {base_path}")
 
-	for monomer in range(1,n_monomers+1):
-		monomer_files.append(folder+base+"-1-"+str(monomer))
-	for dimer in range(1,n_dimers+1):
-		dimer_files.append(folder + base+"-2-"+str(dimer))
 	return monomer_files, dimer_files
-
-# folder = os.path.dirname(os.path.abspath(__file__)) + "/He4/"
-# setup_FMO(folder,"He1-4.FCIDUMP")
