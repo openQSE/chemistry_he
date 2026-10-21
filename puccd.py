@@ -22,11 +22,8 @@ def puccd_initialize(qfw=False, provider=None, shots=None):
 	global estimator
 
 	if qfw:
-		from qfw_qiskit import QFwBackend, QFwBackendType, QFwBackendCapability, QFwEstimatorV2
-		if provider:
-			qfwbackend = QFwBackend(provider=provider)
-		else:
-			qfwbackend = QFwBackend(betype=QFwBackendType.QFW_TYPE_NWQSIM, capability=QFwBackendCapability.QFW_CAP_STATEVECTOR)
+		from qfw_qiskit import QFwBackend, QFwEstimatorV2
+		qfwbackend = QFwBackend(provider=provider or "nwqsim")
 		if shots:
 			qfwbackend.options.shots = shots
 		estimator = QFwEstimatorV2(backend=qfwbackend)
@@ -1469,6 +1466,7 @@ class pairUCC:
 	def optimize_ansatz_qk(self, params:list, maxiter_macro:int=20, thresh_macro:float=1e-7, thresh_amps:float=1e-5, 
 						maxiter_amps:int=1000, thresh_orbs:float=1e-10, maxiter_orbs:int=1000, alpha:float=0.01, diag:bool=False):
 		iter_macro = 0
+		converged = False
 		print("OO-VQE Macro-iteration:", iter_macro)
 		old_e = self.compute_energy_qk(params)
 		self.optimize_amps_qk(params, thresh=thresh_amps, maxiter_amps=maxiter_amps)
