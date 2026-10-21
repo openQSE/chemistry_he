@@ -101,22 +101,23 @@ job collects the chemistry results after every chemistry job succeeds. This
 keeps QPU reservations out of the GAMESS stage.
 
 ```bash
-QFW_QPU_RESOURCE=nwqsim QFW_BACKEND=nwqsim \
+SLURM_ACCOUNT=gen233 QFW_QPU_RESOURCE=nwqsim QFW_BACKEND=nwqsim \
 GAMESS_INPUTS="He1-1.inp He1-4.inp" \
 WORKFLOW_OUTPUT_ROOT="$HOME/chemistry-results" \
-  "$CHEMISTRY_ROOT/workflow/slurm/submit-gamess-fcidump-qfw-workflow.sh" -A gen233
+  "$CHEMISTRY_ROOT/workflow/slurm/submit-gamess-fcidump-qfw-workflow.sh"
 
 # Janus uses the same scripts; select its resource and provider.
-QFW_QPU_RESOURCE=ornl-iqm-20q QFW_BACKEND=iqm \
+SLURM_ACCOUNT=gen233 QFW_QPU_RESOURCE=ornl-iqm-20q QFW_BACKEND=iqm \
 WORKFLOW_OUTPUT_ROOT="$HOME/chemistry-results" \
-  "$CHEMISTRY_ROOT/workflow/slurm/submit-gamess-fcidump-qfw-workflow.sh" -A gen233
+  "$CHEMISTRY_ROOT/workflow/slurm/submit-gamess-fcidump-qfw-workflow.sh"
 ```
 
 The default inputs are `input/He1-1.inp`, `input/He1-2.inp`,
 `input/He1-4.inp`, `input/He1-8.inp`, `input/He1-10.inp`, and
 `input/He1-14.inp`.
 
-The submission wrapper accepts normal `sbatch` options and defaults
+`SLURM_ACCOUNT` is required and is passed to every submitted job with `-A`.
+The submission wrapper also accepts normal `sbatch` options and defaults
 `WORKFLOW_OUTPUT_ROOT` to `$HOME/chemistry-runs`. It creates a unique run
 directory named with a UTC timestamp and the submission process ID.
 `WORKFLOW_RUN_ID` can supply a stable name instead. `jobs.tsv` records every

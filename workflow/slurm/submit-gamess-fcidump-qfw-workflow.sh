@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Submit independent GAMESS and QFw chemistry jobs linked by Slurm dependencies.
-# Usage: QFW_QPU_RESOURCE=nwqsim QFW_BACKEND=nwqsim ./submit-...sh [sbatch options]
+# Usage: SLURM_ACCOUNT=ACCOUNT QFW_BACKEND=nwqsim ./submit-...sh [sbatch options]
 # For Janus IQM, select QFW_QPU_RESOURCE=ornl-iqm-20q and QFW_BACKEND=iqm.
 
 set -euo pipefail
@@ -9,6 +9,11 @@ script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 export CHEMISTRY_ROOT=$(cd "${script_dir}/../.." && pwd)
 qpu_resource=${QFW_QPU_RESOURCE:-nwqsim}
 qfw_backend=${QFW_BACKEND:-nwqsim}
+slurm_account=${SLURM_ACCOUNT:-}
+[[ -n ${slurm_account} ]] || {
+    echo "SLURM_ACCOUNT must name the account used for every workflow job" >&2
+    exit 2
+}
 input_dir=${CHEMISTRY_INPUT_DIR:-"${CHEMISTRY_ROOT}/input"}
 output_root=${WORKFLOW_OUTPUT_ROOT:-"${HOME}/chemistry-runs"}
 run_id=${WORKFLOW_RUN_ID:-"$(date -u +%Y%m%dT%H%M%SZ)-$$"}
@@ -38,7 +43,7 @@ for input_name in "${inputs[@]}"; do
     input_file=$(realpath -e "${input_dir}/${input_name}")
     case_name=${input_name%.inp}
 
-    gamess_job=$(sbatch "$@" --parsable --export=ALL \
+    gamess_job=$(sbatch "$@" -A "${slurm_account}" --parsable --export=ALL \
         --job-name="gamess-${case_name}" \
         --output="${run_dir}/slurm-gamess-%j.out" \
         "${script_dir}/gamess.sbatch" "${input_file}")
@@ -49,7 +54,7 @@ for input_name in "${inputs[@]}"; do
     }
     fcidump=${run_dir}/gamess-runs/${gamess_job}/fcidump/FCIDUMP
 
-    chemistry_job=$(sbatch "$@" --parsable --export=ALL \
+    chemistry_job=$(sbatch "$@" -A "${slurm_account}" --parsable --export=ALL \
         --dependency="afterok:${gamess_job}" --kill-on-invalid-dep=yes \
         --qpu="${qpu_resource}" --job-name="chemistry-${case_name}" \
         --output="${run_dir}/slurm-chemistry-%j.out" \
@@ -70,7 +75,7 @@ for input_name in "${inputs[@]}"; do
 done
 
 dependency=$(IFS=:; echo "${chemistry_jobs[*]}")
-collect_job=$(sbatch "$@" --parsable --export=ALL \
+collect_job=$(sbatch "$@" -A "${slurm_account}" --parsable --export=ALL \
     --dependency="afterok:${dependency}" --kill-on-invalid-dep=yes \
     --job-name=chemistry-collect \
     --output="${run_dir}/slurm-collect-%j.out" \
